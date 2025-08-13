@@ -73,3 +73,79 @@ if (!$conn) {
     echo "Database connected successfully";
 }
 ?>
+
+
+<br><br>
+
+<?php
+//8. Compare Three Variables
+$a = 10;
+$b = 20;
+$c = 15;
+
+if ($a >= $b && $a >= $c) {
+    echo "Largest: $a";
+} elseif ($b >= $a && $b >= $c) {
+    echo "Largest: $b";
+} else {
+    echo "Largest: $c";
+}
+?>
+
+
+<br><br>
+
+<?php
+
+//9. BMI Calculator
+
+function calculateBMI($weight, $height) {
+    $bmi = $weight / ($height * $height);
+    echo "Your BMI is: " . round($bmi, 2);
+}
+
+calculateBMI(70, 1.75); // Example usage
+?>
+
+
+<br><br>
+
+<?php
+// 10. Book Class
+class Book {
+    public $title;
+    public $author;
+    public $yearPublished;
+    public $isbn;
+
+    public function __construct($title, $author, $yearPublished, $isbn) {
+        $this->title = $title;
+        $this->author = $author;
+        $this->yearPublished = $yearPublished;
+        $this->isbn = $isbn;
+    }
+
+    public function getBookInfo() {
+        return "Title: {$this->title}, Author: {$this->author}, Year: {$this->yearPublished}, ISBN: {$this->isbn}";
+    }
+}
+
+class EBook extends Book {
+    public $fileSize;
+
+    public function __construct($title, $author, $yearPublished, $isbn, $fileSize) {
+        parent::__construct($title, $author, $yearPublished, $isbn);
+        $this->fileSize = $fileSize;
+    }
+
+    public function getBookInfo() {
+        return parent::getBookInfo() . ", File Size: {$this->fileSize}MB";
+    }
+}
+
+$book = new Book("PHP Basics", "John Doe", 2020, "123-456789");
+$ebook = new EBook("Advanced PHP", "Jane Smith", 2022, "987-654321", 5);
+
+echo $book->getBookInfo() . "<br>";
+echo $ebook->getBookInfo();
+?>
